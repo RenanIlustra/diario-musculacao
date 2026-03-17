@@ -9,7 +9,7 @@ interface WorkoutContextType {
   setActiveGroup: (group: MuscleGroupType) => void;
   exercises: Exercise[];
   records: WorkoutRecord[];
-  addExercise: (name: string) => void;
+  addExercise: (name: string, groupId?: MuscleGroupType) => void;
   addRecord: (exerciseId: string, weight: number, reps: number) => void;
   getExerciseRecords: (exerciseId: string) => WorkoutRecord[];
   getLastRecord: (exerciseId: string) => WorkoutRecord | null;
@@ -28,11 +28,11 @@ export function WorkoutProvider({ children }: { children: React.ReactNode }) {
     setRecords(storage.getRecords());
   }, []);
 
-  const addExercise = useCallback((name: string) => {
+  const addExercise = useCallback((name: string, groupId?: MuscleGroupType) => {
     const newExercise: Exercise = {
       id: crypto.randomUUID(),
       name,
-      groupId: activeGroup,
+      groupId: groupId || activeGroup,
       custom: true,
     };
     storage.saveExercise(newExercise);

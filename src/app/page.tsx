@@ -4,8 +4,9 @@ import { useWorkout } from '@/context/WorkoutContext';
 import { MuscleGroupNav } from '@/components/MuscleGroupNav';
 import { ExerciseCard } from '@/components/ExerciseCard';
 import { AddExerciseDialog } from '@/components/AddExerciseDialog';
-import { Dumbbell } from 'lucide-react';
+import { Dumbbell, Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   const { activeGroup, exercises } = useWorkout();
@@ -28,12 +29,28 @@ export default function Home() {
       {/* Main Content */}
       <div className="p-4 space-y-4 max-w-2xl mx-auto mt-4">
         {activeExercises.length > 0 ? (
-          activeExercises.map((exercise) => (
-            <ExerciseCard key={exercise.id} exercise={exercise} />
-          ))
+          <>
+            {activeExercises.map((exercise) => (
+              <ExerciseCard key={exercise.id} exercise={exercise} />
+            ))}
+            
+            <AddExerciseDialog 
+              trigger={
+                <Button variant="outline" className="w-full h-16 border-dashed border-border/50 text-muted-foreground hover:text-primary hover:border-primary transition-all uppercase font-bold tracking-widest text-xs">
+                  <Plus className="w-5 h-5 mr-1" />
+                  ADICIONAR EXERCÍCIO EM {activeGroup}
+                </Button>
+              }
+            />
+          </>
         ) : (
-          <div className="text-center py-20 bg-card/20 rounded-2xl border-2 border-dashed border-border/50">
+          <div className="flex flex-col items-center justify-center py-20 bg-card/20 rounded-2xl border-2 border-dashed border-border/50 gap-4">
             <p className="text-muted-foreground">Nenhum exercício cadastrado para {activeGroup}.</p>
+            <AddExerciseDialog 
+              trigger={
+                <Button className="font-bold">ADICIONAR PRIMEIRO EXERCÍCIO</Button>
+              }
+            />
           </div>
         )}
       </div>
