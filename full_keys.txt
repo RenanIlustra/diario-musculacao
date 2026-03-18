@@ -1,4 +1,0 @@
-anon: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZjY2d4cHJ5bGFzb3N6emxyeXFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4MTQxMDcsImV4cCI6MjA4OTM5MDEwN30.IE7A997qMD--vq4El6M84_xm-7QKN_Mumm6VkjZ2X_U
-service_role: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZjY2d4cHJ5bGFzb3N6emxyeXFhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzgxNDEwNywiZXhwIjoyMDg5MzkwMTA3fQ.inr9aYWp3cc0sED0V2ZrU6LzzvTuC02VXFZK2rFgZis
-default: sb_publishable_ZgBSGuyraWEkmUxa-8oB_Q_q6JvlpyV
-default: sb_secret_qe3fE··························
