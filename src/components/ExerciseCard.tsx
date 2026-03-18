@@ -37,11 +37,11 @@ export function ExerciseCard({ exercise }: ExerciseCardProps) {
     }
   }, [lastRecord]);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const w = parseFloat(weight.replace(',', '.'));
     const r = parseInt(reps);
     if (!isNaN(w) && !isNaN(r)) {
-      addRecord(exercise.id, w, r);
+      await addRecord(exercise.id, w, r);
     }
   };
 

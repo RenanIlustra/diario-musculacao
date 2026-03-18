@@ -41,9 +41,9 @@ export function AddExerciseDialog({ trigger }: AddExerciseDialogProps) {
     }
   }, [activeGroup, open]);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (name.trim()) {
-      addExercise(name.trim(), selectedGroup as MuscleGroupType);
+      await addExercise(name.trim(), selectedGroup as MuscleGroupType);
       setName('');
       setOpen(false);
     }
