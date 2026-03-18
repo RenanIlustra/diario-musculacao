@@ -22,12 +22,12 @@ export const storage = {
     localStorage.setItem(KEYS.EXERCISES, JSON.stringify(exercises));
   },
 
-  getRecords: (exerciseId?: string): WorkoutRecord[] => {
+  getRecords: (exercise_id?: string): WorkoutRecord[] => {
     if (typeof window === 'undefined') return [];
     const stored = localStorage.getItem(KEYS.RECORDS);
     const records: WorkoutRecord[] = stored ? JSON.parse(stored) : [];
-    if (exerciseId) {
-      return records.filter(r => r.exerciseId === exerciseId).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    if (exercise_id) {
+      return records.filter(r => r.exercise_id === exercise_id).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     }
     return records;
   },
@@ -38,8 +38,8 @@ export const storage = {
     localStorage.setItem(KEYS.RECORDS, JSON.stringify(records));
   },
 
-  getLastRecord: (exerciseId: string): WorkoutRecord | null => {
-    const records = storage.getRecords(exerciseId);
+  getLastRecord: (exercise_id: string): WorkoutRecord | null => {
+    const records = storage.getRecords(exercise_id);
     return records.length > 0 ? records[0] : null;
   }
 };
