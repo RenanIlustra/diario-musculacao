@@ -29,7 +29,6 @@ export async function GET(request: NextRequest) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (!error) {
-      // Handle Vercel's reverse proxy by checking the forwarded host header
       const forwardedHost = request.headers.get('x-forwarded-host');
       const isLocalEnv = process.env.NODE_ENV === 'development';
 
@@ -40,9 +39,11 @@ export async function GET(request: NextRequest) {
       } else {
         return NextResponse.redirect(`${origin}${next}`);
       }
+    } else {
+      console.error('Auth error:', error.message);
+      return NextResponse.redirect(`${origin}/?error=${encodeURIComponent(error.message)}`);
     }
   }
 
-  // On error, redirect back to login
-  return NextResponse.redirect(`${origin}/?error=auth`);
+  return NextResponse.redirect(`${origin}/?error=no_code`);
 }
