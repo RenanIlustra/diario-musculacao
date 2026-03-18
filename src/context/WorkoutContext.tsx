@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { Exercise, WorkoutRecord, MuscleGroupType, MUSCLE_GROUPS, DEFAULT_EXERCISES } from '@/lib/types';
 import { supabase } from '@/lib/supabase';
